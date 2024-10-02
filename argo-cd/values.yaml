@@ -1,0 +1,11 @@
+argo-cd:
+  dex:
+    enabled: false
+  notifications:
+    enabled: false
+  server:
+    ingress:
+      enabled: true
+      hostname: "argocd.dorilahav.com"
+    extraArgs:
+      - --insecure

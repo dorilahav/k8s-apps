@@ -3,9 +3,19 @@ argo-cd:
     enabled: false
   notifications:
     enabled: false
+
+  global:
+    domain: argocd.dorilahav.com
+
+  configs:
+    params:
+      server.insecure: true
+
   server:
     ingress:
       enabled: true
-      hostname: "argocd.dorilahav.com"
-    extraArgs:
-      - --insecure
+      ingressClassName: "nginx"
+      annotations:
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+      tls: false

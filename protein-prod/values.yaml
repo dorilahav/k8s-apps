@@ -3,5 +3,5 @@ replicaCount: 1
 image: dorimon/protein-intake-calculator:1.0.0
 
 route:
-  host: protein2.dorilahav.com
+  host: protein.dorilahav.com
   path: /

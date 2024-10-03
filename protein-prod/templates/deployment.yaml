@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment-{{ .Chart.Name }}
+  name: {{ .Chart.Name }}
   labels:
     app: {{ .Chart.Name }}
 spec:
@@ -15,14 +15,14 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       containers:
-      - name: hello
-        image: nginxdemos/hello
+      - name: app
+        image: {{ .Values.image }}
         ports:
         - containerPort: 80
         resources:
           requests:
-            cpu: 1
-            memory: 30Mi
+            cpu: 20m
+            memory: 32Mi
           limits:
-            cpu: 2
+            cpu: 100m
             memory: 128Mi

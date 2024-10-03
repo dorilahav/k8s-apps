@@ -1,5 +1,0 @@
-replicaCount: 1
-
-route:
-  host: test.dorilahav.com
-  path: /

@@ -1,0 +1,5 @@
+replicaCount: 2
+
+route:
+  host: test.dorilahav.com
+  path: /

@@ -1,4 +1,4 @@
-replicaCount: 2
+replicaCount: 1
 
 route:
   host: test.dorilahav.com

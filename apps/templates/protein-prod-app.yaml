@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: protein-intake-calculator
+  name: protein-prod
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:

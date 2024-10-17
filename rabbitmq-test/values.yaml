@@ -1,0 +1,8 @@
+replicas: 1
+
+ports:
+  amqp: 30672
+  management: 31672
+
+storage:
+  size: 10Gi

@@ -18,12 +18,6 @@ argo-cd:
             hs.status = "Healthy"
             hs.message = "Probably just fine"
             return hs
-        admissionregistration.k8s.io/ValidatingWebhookConfiguration:
-          health.lua: |
-            hs = {}
-            hs.status = "Healthy"
-            hs.message = "Probably just fine"
-            return hs
 
   server:
     ingress:

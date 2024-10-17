@@ -1,1 +1,4 @@
-replicas: 2
+metrics-server:
+  replicas: 2
+  args:
+  - "--kubelet-insecure-tls"

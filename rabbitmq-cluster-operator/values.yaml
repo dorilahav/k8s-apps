@@ -792,7 +792,7 @@ msgTopologyOperator:
   ## @param msgTopologyOperator.pdb.maxUnavailable Maximum number/percentage of pods that may be made unavailable
   ##
   pdb:
-    create: true
+    create: false
     minAvailable: ""
     maxUnavailable: ""
   ## Configure Pods Security Context

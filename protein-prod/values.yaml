@@ -1,4 +1,4 @@
-replicaCount: 1
+replicaCount: 2
 
 image: dorimon/protein-intake-calculator:1.0.0
 

@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: mongodb
-    apps.kubernetes.io/pod-index: 0
+    apps.kubernetes.io/pod-index: "0"
   ports:
     - name: mongodb
       protocol: TCP
@@ -18,7 +18,7 @@ metadata:
 spec:
   selector:
     app: mongodb
-    apps.kubernetes.io/pod-index: 1
+    apps.kubernetes.io/pod-index: "1"
   ports:
     - name: mongodb
       protocol: TCP
@@ -31,7 +31,7 @@ metadata:
 spec:
   selector:
     app: mongodb
-    apps.kubernetes.io/pod-index: 2
+    apps.kubernetes.io/pod-index: "2"
   ports:
     - name: mongodb
       protocol: TCP

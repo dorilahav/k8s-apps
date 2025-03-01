@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mongodb-health-checker
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dorilahav/k8s-apps.git
+    path: mongodb-health-checker
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mongodb-test
+  syncPolicy:
+    automated:
+      selfHeal: true

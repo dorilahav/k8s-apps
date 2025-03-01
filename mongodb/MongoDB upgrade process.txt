@@ -1,0 +1,36 @@
+1. Step down primary, make sure member 0 is the primary
+	- Increase the priority of member 0
+2. Remove member 2
+	- Scale down the statefulset
+	- Remove member-2 service
+3. Upgrade member 2
+	- Create a dedicated deployment with upgraded image
+	- Create a dedicated service
+	- Make sure the new member 2 is recognized by the replica
+4. Remove member 1
+	- Scale down the statefulset
+	- Remove member-1 service
+5. Upgrade member 1
+	- Create a dedicated deployment with upgraded image
+	- Create a dedicated service
+	- Make sure the new member 1 is recognized by the replica
+6. Step down primary, make sure the primary is not member 0
+	- Decrease the priority of member 0
+	- Increate the priority of any other member
+7. Upgrade member 0
+	- Replace statefulset image to new version
+8. Take down temporary member-1
+	- Remove temporary deployment
+	- Remove temporary service
+9. Scale up mongodb-1
+	- Increase statefulset replicas
+	- Create member-1 service
+	- Make sure entire replicaset is healthy
+10. Take down temporary member-2
+	- Remove temporary deployment
+	- Remove temporary service
+11. Scale up mongodb-2
+	- Increase statefulset replicas
+	- Create member-2 service
+	- Make sure entire replicaset is healthy
+8. Increate feature compatibility

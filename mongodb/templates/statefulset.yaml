@@ -19,7 +19,7 @@ spec:
             name: mongod-config
       containers:
       - name: mongodb
-        image: mongodb/mongodb-community-server:4.4-ubi8
+        image: mongodb/mongodb-community-server:5.0-ubi8
         command: ["mongod", "--config", "/etc/mongod.conf"]
         securityContext:
           allowPrivilegeEscalation: false

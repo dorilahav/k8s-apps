@@ -13,6 +13,10 @@ spec:
       labels:
         app: mongodb
     spec:
+      volumes:
+        - name: mongod-config
+          configMap:
+            name: mongod-config
       containers:
       - name: mongodb
         image: mongodb/mongodb-community-server:4.4-ubi8
@@ -25,6 +29,9 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data/db
+        - name: mongod-config
+          mountPath: /etc/mongod.conf
+          subPath: mongod.conf
   volumeClaimTemplates:
   - metadata:
       name: data

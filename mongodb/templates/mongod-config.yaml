@@ -43,6 +43,7 @@ data:
 
     ## Enterprise-Only Options
 
-    #auditLog:
+    auditLog:
+      destination: console
 
     #snmp:

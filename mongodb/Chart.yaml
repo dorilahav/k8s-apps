@@ -1,5 +1,0 @@
-apiVersion: v2
-name: mongodb
-version: 0.0.1
-type: application
-appVersion: "4.4"

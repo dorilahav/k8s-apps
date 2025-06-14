@@ -1,5 +1,0 @@
-apiVersion: v2
-name: mongodb-health-checker
-version: 0.0.1
-type: application
-appVersion: "1.0.0"

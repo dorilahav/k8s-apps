@@ -3,9 +3,7 @@ kind: Ingress
 metadata:
   name: {{ include "static-site.name" . }}
   annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.org/rewrites: "serviceName={{ include "static-site.name" . }} rewrite=/"
     kubernetes.io/ingress.class: nginx
 spec:
   ingressClassName: nginx

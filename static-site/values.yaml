@@ -1,5 +1,5 @@
 # name is required - deployment will fail if not provided
-name: 2026-new-years-landing-page
+name: nava-2026-new-years-landing-page
 
 replicaCount: 1
 

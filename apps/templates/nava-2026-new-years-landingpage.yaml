@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 2026-new-years-landing-page
+  name: nava-2026-new-years-landing-page
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:

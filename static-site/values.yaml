@@ -1,0 +1,10 @@
+# name is required - deployment will fail if not provided
+name: 2026-new-years-landing-page
+
+replicaCount: 1
+
+image: dorimon/2026-new-years-landing-page:latest
+
+route:
+  host: nava.dorilahav.com
+  path: /2026-new-years

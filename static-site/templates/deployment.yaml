@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "static-site.name" . }}
+  labels:
+    app: {{ include "static-site.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "static-site.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "static-site.name" . }}
+    spec:
+      containers:
+      - name: app
+        image: {{ .Values.image }}
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 20m
+            memory: 32Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi

@@ -7,9 +7,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/dorilahav/k8s-apps.git
-    path: hetzner-csi
-    targetRevision: HEAD
+    repoURL: https://charts.hetzner.cloud
+    chart: hcloud-csi
+    targetRevision: 2.9.0
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system

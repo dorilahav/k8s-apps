@@ -3,4 +3,4 @@ controller:
     enable: true
 
   service:
-    allocateLoadBalancerNodePorts: false
+    create: false

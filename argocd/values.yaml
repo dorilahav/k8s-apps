@@ -1,29 +1,25 @@
-argo-cd:
-  dex:
-    enabled: false
-  notifications:
-    enabled: false
+dex:
+  enabled: false
+notifications:
+  enabled: false
 
-  global:
-    domain: argocd.dorilahav.com
+global:
+  domain: argocd.dorilahav.com
 
-  configs:
-    params:
-      server.insecure: true
-    cm:
-      resource.customizations: |
-        networking.k8s.io/Ingress:
-          health.lua: |
-            hs = {}
-            hs.status = "Healthy"
-            hs.message = "Probably just fine"
-            return hs
+configs:
+  params:
+    server.insecure: true
+  cm:
+    resource.customizations: |
+      networking.k8s.io/Ingress:
+        health.lua: |
+          hs = {}
+          hs.status = "Healthy"
+          hs.message = "Probably just fine"
+          return hs
 
-  server:
-    ingress:
-      enabled: true
-      ingressClassName: "nginx"
-      annotations:
-        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-      tls: false
+server:
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    tls: false

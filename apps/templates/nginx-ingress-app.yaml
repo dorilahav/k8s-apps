@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+  - repoURL: oci://ghcr.io/nginxinc/charts
+    chart: nginx-ingress
+    targetRevision: 1.4.0
+    helm:
+      valueFiles:
+      - $values/nginx-ingress/values.yaml
+  - repoURL: https://github.com/dorilahav/k8s-apps.git
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx-ingress
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true

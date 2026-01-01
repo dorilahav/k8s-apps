@@ -6,10 +6,16 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: nava
-  source:
-    repoURL: https://github.com/dorilahav/k8s-apps.git
-    path: static-site
+  sources:
+  - repoURL: https://github.com/dorilahav/k8s-apps.git
+    path: charts/static-site
     targetRevision: HEAD
+    helm:
+      valueFiles:
+      - $values/nava-2026-new-years-landing-page/values.yaml
+  - repoURL: https://github.com/dorilahav/k8s-apps.git
+    targetRevision: HEAD
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: nava

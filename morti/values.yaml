@@ -1,0 +1,9 @@
+replicaCount:
+
+containerPort: 3000
+
+image: dorimon/morti-app:latest
+
+route:
+  host: morti.dorilahav.com
+  path: /

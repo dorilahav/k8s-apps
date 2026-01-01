@@ -18,7 +18,7 @@ spec:
       - name: app
         image: {{ required ".Values.image is required" .Values.image }}
         ports:
-        - containerPort: 80
+        - containerPort: {{ .Values.containerPort | default 80 }}
         resources:
           requests:
             cpu: 20m

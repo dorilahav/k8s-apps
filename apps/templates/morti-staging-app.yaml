@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: morti
+  name: morti-staging
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,13 +12,13 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-      - $values/morti/values.yaml
+      - $values/morti-staging/values.yaml
   - repoURL: https://github.com/dorilahav/k8s-apps.git
     targetRevision: HEAD
     ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: morti
+    namespace: morti-staging
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

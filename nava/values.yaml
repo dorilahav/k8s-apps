@@ -1,0 +1,7 @@
+replicaCount:
+
+image: dorimon/nava:0.1.0
+
+route:
+  host: nava.dorilahav.com
+  path: /

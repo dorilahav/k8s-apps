@@ -1,7 +1,0 @@
-replicaCount:
-
-image: dorimon/2026-new-years-landing-page:0.1.4
-
-route:
-  host: nava.dorilahav.com
-  path: /2026-new-years

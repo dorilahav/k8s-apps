@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nava-2026-new-years-landing-page
+  name: nava
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: nava
+  project: apps
   sources:
   - repoURL: https://github.com/dorilahav/k8s-apps.git
     path: charts/static-site
     targetRevision: HEAD
     helm:
       valueFiles:
-      - $values/nava-2026-new-years-landing-page/values.yaml
+      - $values/nava/values.yaml
   - repoURL: https://github.com/dorilahav/k8s-apps.git
     targetRevision: HEAD
     ref: values

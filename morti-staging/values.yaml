@@ -2,7 +2,7 @@ replicaCount:
 
 containerPort: 3000
 
-image: dorimon/morti-app:a86872f
+image: dorimon/morti-app:fdd321f
 
 route:
   host: morti.dorilahav.com

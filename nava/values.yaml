@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/nava:0.1.3
+image: dorimon/nava:0.2.0
 
 route:
   host: nava.dorilahav.com

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nava
+  name: nava-production
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,13 +12,13 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-      - $values/nava/values.yaml
+      - $values/nava/production-values.yaml
   - repoURL: https://github.com/dorilahav/k8s-apps.git
     targetRevision: HEAD
     ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: nava
+    namespace: nava-production
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

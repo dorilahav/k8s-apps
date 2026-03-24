@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/nava:0.5.2
+image: dorimon/nava:0.6.0
 
 route:
   host: recruitment.co.il

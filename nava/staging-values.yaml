@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/nava:4e02a851ca57d675f1090cdc2f03e6740067918a
+image: dorimon/nava:ea64c62ba7d64ef1a104d9ce082bf4b75e1454f3
 
 route:
   host: nava.dorilahav.com

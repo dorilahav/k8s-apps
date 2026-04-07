@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/jordys-sweets:41a7d09505b35f0f5fe38c4669acd0a15ff9cd7b
+image: dorimon/jordys-sweets:c6355d9df1656243acb18ad0ca1b1129e40bc957
 
 route:
   host: jordys.dorilahav.com

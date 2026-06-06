@@ -1,0 +1,7 @@
+replicaCount:
+
+image: dorimon/first-impression:8284d3ff0811504c9f0394671a4e829f6b508a52
+
+route:
+  host: firstimpression.dorilahav.com
+  path: /

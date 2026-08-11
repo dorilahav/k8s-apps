@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/first-impression:2d18e27490801b4d3b81268d5e91e9d9317e762f
+image: dorimon/first-impression:55cc2341124d0f3666f621779a0c0d24b51e9f68
 
 route:
   host: firstimpression.dorilahav.com

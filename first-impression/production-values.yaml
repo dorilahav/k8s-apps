@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/first-impression:0.5.0
+image: dorimon/first-impression:0.6.0
 
 route:
   host: firstimpression.co.il

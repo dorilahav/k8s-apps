@@ -1,0 +1,7 @@
+replicaCount:
+
+image: dorimon/itamar:latest
+
+route:
+  host: itamar.sasson.org.il
+  path: /

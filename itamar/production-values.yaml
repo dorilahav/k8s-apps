@@ -2,6 +2,8 @@ replicaCount:
 
 image: dorimon/itamar:latest
 
+containerPort: 3000
+
 route:
   host: itamar.sasson.org.il
   path: /

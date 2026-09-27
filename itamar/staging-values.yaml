@@ -3,6 +3,7 @@ replicaCount:
 image: dorimon/itamar:28b15ac60de91d50c1c7eeaab2fad037d4cc06f7
 
 containerPort: 3000
+envSecretName: itamar-config
 
 route:
   host: itamar.dorilahav.com

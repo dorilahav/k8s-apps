@@ -19,6 +19,11 @@ spec:
         image: {{ required ".Values.image is required" .Values.image }}
         ports:
         - containerPort: {{ .Values.containerPort | default 80 }}
+        {{- with .Values.envSecretName }}
+        envFrom:
+        - secretRef:
+            name: {{ . }}
+        {{- end }}
         resources:
           requests:
             cpu: 20m

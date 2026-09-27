@@ -3,6 +3,7 @@ replicaCount:
 image: dorimon/itamar:latest
 
 containerPort: 3000
+envSecretName: itamar-config
 
 route:
   host: itamar.sasson.org.il

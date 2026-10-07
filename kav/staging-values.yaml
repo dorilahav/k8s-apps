@@ -1,0 +1,10 @@
+replicaCount:
+
+image: dorimon/kav:latest
+
+containerPort: 3000
+envSecretName: kav-config
+
+route:
+  host: kav.dorilahav.com
+  path: /

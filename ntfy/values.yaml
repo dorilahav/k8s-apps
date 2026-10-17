@@ -8,3 +8,9 @@ persistence:
 
 route:
   host: ntfy.dorilahav.com
+
+# Extra NTFY_* environment variables
+env:
+  NTFY_AUTH_FILE: /var/lib/ntfy/user.db
+  NTFY_AUTH_DEFAULT_ACCESS: deny-all
+  NTFY_ENABLE_LOGIN: "true"

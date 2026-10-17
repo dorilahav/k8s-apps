@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+  annotations:
+    nginx.org/websocket-services: {{ .Release.Name }}
+    nginx.org/proxy-read-timeout: "3600s"
+    nginx.org/proxy-send-timeout: "3600s"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: {{ required ".Values.route.host is required" .Values.route.host }}
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}
+                port:
+                  number: 80
+            path: /

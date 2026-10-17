@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: ntfy
+        image: {{ .Values.image }}
+        args: ["serve"]
+        env:
+        - name: NTFY_BASE_URL
+          value: {{ required ".Values.baseUrl is required" .Values.baseUrl | quote }}
+        - name: NTFY_LISTEN_HTTP
+          value: ":80"
+        - name: NTFY_BEHIND_PROXY
+          value: "true"
+        - name: NTFY_CACHE_FILE
+          value: /var/lib/ntfy/cache.db
+        - name: NTFY_ATTACHMENT_CACHE_DIR
+          value: /var/lib/ntfy/attachments
+        {{- range $key, $value := .Values.env }}
+        - name: {{ $key }}
+          value: {{ $value | quote }}
+        {{- end }}
+        {{- with .Values.envSecretName }}
+        envFrom:
+        - secretRef:
+            name: {{ . }}
+        {{- end }}
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /v1/health
+            port: 80
+        livenessProbe:
+          httpGet:
+            path: /v1/health
+            port: 80
+          initialDelaySeconds: 10
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/ntfy
+        resources:
+          requests:
+            cpu: 20m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+      volumes:
+      - name: data
+        {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}
+        {{- else }}
+        emptyDir: {}
+        {{- end }}

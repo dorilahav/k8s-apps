@@ -1,0 +1,10 @@
+image: binwiederhier/ntfy:v2.11.0
+
+baseUrl: https://ntfy.dorilahav.com
+
+persistence:
+  enabled: true
+  size: 1Gi
+
+route:
+  host: ntfy.dorilahav.com

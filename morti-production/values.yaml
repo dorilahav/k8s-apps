@@ -1,6 +1,6 @@
 replicaCount:
 
-containerPort: 3000
+containerPort: 80
 
 image: dorimon/morti-app:privacy-policy
 

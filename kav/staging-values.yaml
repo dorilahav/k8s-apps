@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/kav:d070c4ff8d6d7bfaa66eb6a7a55436263ae5b68a
+image: dorimon/kav:5755931ab3e8e3f8ec4a407a61bd7620682c66d5
 
 containerPort: 80
 envSecretName: kav-config

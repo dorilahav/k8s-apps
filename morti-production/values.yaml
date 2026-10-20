@@ -1,0 +1,9 @@
+replicaCount:
+
+containerPort: 3000
+
+image: dorimon/morti-app:privacy-policy
+
+route:
+  host: morti.co.il
+  path: /

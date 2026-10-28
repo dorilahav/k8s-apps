@@ -1,6 +1,6 @@
 replicaCount:
 
-image: dorimon/itamar:c725879171d1982a8fd27a4dd7294db6716635a1
+image: dorimon/itamar:e252d892b477b45cc641c5d268ae85dfbf345c7f
 
 containerPort: 3000
 envSecretName: itamar-config

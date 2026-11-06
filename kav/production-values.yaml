@@ -6,5 +6,5 @@ containerPort: 80
 envSecretName: kav-config
 
 route:
-  host: kav-home-design.co.il
+  host: clau-design.co.il
   path: /

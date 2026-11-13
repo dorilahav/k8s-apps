@@ -33,7 +33,27 @@ spec:
         helm:
           valueFiles:
           - $values/morti-previews/defaults.yaml
-          - $values/{{`{{ .path.path }}/{{ .path.filename }}`}}
+          # The per-PR values are copied into the Application itself rather than
+          # read from pr-<n>.yaml: the app is deleted *because* that file left git,
+          # and ArgoCD renders the chart again at deletion to find the PostDelete
+          # cleanup Job. Rendered from the missing file, that fails, the hook is
+          # never created and the morti-pr-<n> database is left behind.
+          parameters:
+          - name: route.host
+            value: '{{`{{ .route.host }}`}}'
+            forceString: true
+          - name: leads.image
+            value: '{{`{{ .leads.image }}`}}'
+            forceString: true
+          - name: api.image
+            value: '{{`{{ .api.image }}`}}'
+            forceString: true
+          - name: api.env.MONGODB_DB_NAME
+            value: '{{`{{ .api.env.MONGODB_DB_NAME }}`}}'
+            forceString: true
+          - name: api.env.CORS_ORIGIN
+            value: '{{`{{ .api.env.CORS_ORIGIN }}`}}'
+            forceString: true
       - repoURL: https://github.com/dorilahav/k8s-apps.git
         targetRevision: HEAD
         ref: values

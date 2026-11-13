@@ -26,3 +26,8 @@ api:
     limits:
       cpu: 300m
       memory: 256Mi
+
+# PR previews only (morti-previews/defaults.yaml): empty the preview's
+# morti-pr-<n> database when ArgoCD deletes its app.
+previewDbCleanup:
+  enabled: false

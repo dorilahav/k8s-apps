@@ -1,0 +1,37 @@
+# Shared values for every PR preview, layered under each morti-previews/pr-<n>.yaml.
+# The per-PR files (host, images, MONGODB_DB_NAME, CORS_ORIGIN) are written and
+# removed by morti's .github/workflows/preview.yml and preview-janitor.yml; the
+# ApplicationSet in apps/templates/morti-previews-appset.yaml turns each into
+# the Argo app morti-pr-<n>.
+#
+# The cluster is small: requests are minimal, and Recreate means a rollout
+# never needs a surge pod that the morti-previews ResourceQuota cannot fit.
+# Tune with `kubectl top pod -n morti-previews`.
+
+leads:
+  strategy:
+    type: Recreate
+  resources:
+    requests:
+      cpu: 10m
+      memory: 96Mi
+    limits:
+      cpu: 250m
+      memory: 320Mi
+
+api:
+  # Shared by every preview: MONGODB_URI only. The database name comes from
+  # each preview's api.env.MONGODB_DB_NAME.
+  envSecretName: morti-api-config
+  strategy:
+    type: Recreate
+  resources:
+    requests:
+      cpu: 10m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 192Mi
+
+previewDbCleanup:
+  enabled: true

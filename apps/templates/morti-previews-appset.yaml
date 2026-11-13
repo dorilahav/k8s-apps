@@ -1,0 +1,50 @@
+# One Argo app per morti PR preview: morti's .github/workflows/preview.yml
+# writes morti-previews/pr-<n>.yaml and removes it when the PR closes or turns
+# draft (or preview-janitor.yml does). A removed file deletes the app; the
+# finalizer prunes its resources and the chart's PostDelete Job empties the
+# morti-pr-<n> database.
+#
+# root-app renders this file with Helm, so every ApplicationSet expression is
+# escaped ({{`{{ ... }}`}}) to reach Argo verbatim.
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: morti-previews
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/dorilahav/k8s-apps.git
+      revision: HEAD
+      files:
+      - path: morti-previews/pr-*.yaml
+  template:
+    metadata:
+      name: morti-pr-{{`{{ .pr }}`}}
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: apps
+      sources:
+      - repoURL: https://github.com/dorilahav/k8s-apps.git
+        path: charts/morti
+        targetRevision: HEAD
+        helm:
+          valueFiles:
+          - $values/morti-previews/defaults.yaml
+          - $values/{{`{{ .path.path }}/{{ .path.filename }}`}}
+      - repoURL: https://github.com/dorilahav/k8s-apps.git
+        targetRevision: HEAD
+        ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        # Shared by all previews: the chart names everything after the release
+        # (the app name), and the one hand-made morti-api-config secret lives here.
+        namespace: morti-previews
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+        automated:
+          selfHeal: true
+          prune: true

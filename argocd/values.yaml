@@ -23,3 +23,14 @@ server:
     enabled: true
     ingressClassName: "nginx"
     tls: false
+
+# The ApplicationSet controller serves its own webhook (port 7000); the one on
+# argocd-server only refreshes existing Applications. Without this, a new
+# morti-previews/pr-<n>.yaml waits for the controller's next poll. k8s-apps has
+# a second GitHub webhook (push, same secret) pointing here. Its own host: the
+# NGINX Inc controller rejects a second Ingress for argocd.dorilahav.com.
+applicationSet:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostname: argocd-appset.dorilahav.com

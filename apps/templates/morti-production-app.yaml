@@ -8,7 +8,7 @@ spec:
   project: apps
   sources:
   - repoURL: https://github.com/dorilahav/k8s-apps.git
-    path: charts/static-site
+    path: charts/morti
     targetRevision: HEAD
     helm:
       valueFiles:

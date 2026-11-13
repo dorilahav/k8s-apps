@@ -1,0 +1,6 @@
+apiVersion: v2
+name: morti
+description: Morti - the leads site (Next.js) and the api (Express) behind one host
+version: 0.0.1
+type: application
+appVersion: "1.0.0"

@@ -1,9 +1,10 @@
-replicaCount:
-
-containerPort: 3000
-
-image: dorimon/morti-app:c58f6c9
-
+# Image tags are bumped by morti's .github/workflows/staging-release.yml.
 route:
   host: morti.dorilahav.com
-  path: /
+
+leads:
+  image: dorimon/morti-leads:initial
+
+api:
+  image: dorimon/morti-api:initial
+  envSecretName: morti-api-config

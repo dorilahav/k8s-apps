@@ -1,0 +1,27 @@
+# One Ingress for both services: the NGINX Inc controller rejects a second
+# Ingress for the same host. The browser posts to /api/* on the site's own
+# origin, and the api serves its routes under /api, so no rewrite.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: {{ required ".Values.route.host is required" .Values.route.host }}
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "morti.apiName" . }}
+            port:
+              number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "morti.leadsName" . }}
+            port:
+              number: 80

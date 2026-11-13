@@ -1,8 +1,9 @@
-# Shared values for every PR preview, layered under each morti-previews/pr-<n>.yaml.
-# The per-PR files (host, images, MONGODB_DB_NAME, CORS_ORIGIN) are written and
-# removed by morti's .github/workflows/preview.yml and preview-janitor.yml; the
+# Shared values for every PR preview. The per-PR files, morti-previews/pr-<n>.yaml
+# (host, images, MONGODB_DB_NAME, CORS_ORIGIN), are written and removed by
+# morti's .github/workflows/preview.yml and preview-janitor.yml. The
 # ApplicationSet in apps/templates/morti-previews-appset.yaml turns each into
-# the Argo app morti-pr-<n>.
+# the Argo app morti-pr-<n>, passing its values as Helm parameters on top of
+# this file. Those files are generator input only, never a Helm values file.
 #
 # The cluster is small: requests are minimal, and Recreate means a rollout
 # never needs a surge pod that the morti-previews ResourceQuota cannot fit.

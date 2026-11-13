@@ -1,0 +1,23 @@
+# Home of every morti PR preview (see morti-previews-appset.yaml). The
+# hand-made secret morti-api-config (MONGODB_URI only) lives here too.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: morti-previews
+---
+# Hard cap so previews can never starve staging or production on this small
+# cluster. Sized for 3 previews (morti's preview.yml MAX_PREVIEWS) at the
+# limits in morti-previews/defaults.yaml, plus one cleanup Job. Raise both
+# together.
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: morti-previews
+  namespace: morti-previews
+spec:
+  hard:
+    pods: "8"
+    requests.cpu: 300m
+    requests.memory: 640Mi
+    limits.cpu: "2"
+    limits.memory: 1792Mi

@@ -7,6 +7,10 @@ metadata:
     app: {{ $name }}
 spec:
   replicas: {{ .Values.leads.replicaCount | default 1 }}
+  {{- with .Values.leads.strategy }}
+  strategy:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   selector:
     matchLabels:
       app: {{ $name }}

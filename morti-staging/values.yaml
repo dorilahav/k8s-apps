@@ -3,8 +3,8 @@ route:
   host: morti.dorilahav.com
 
 leads:
-  image: dorimon/morti-leads:ec9c446065682f9a0ecff3b42f375ec7afca4a93
+  image: dorimon/morti-leads:430861dd0167de2e38ba8fdde6569df376b58ca7
 
 api:
-  image: dorimon/morti-api:ec9c446065682f9a0ecff3b42f375ec7afca4a93
+  image: dorimon/morti-api:430861dd0167de2e38ba8fdde6569df376b58ca7
   envSecretName: morti-api-config

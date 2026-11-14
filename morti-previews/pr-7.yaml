@@ -1,0 +1,12 @@
+# Written by morti's .github/workflows/preview.yml - do not edit by hand.
+# Removed when PR #7 closes or turns draft, or by preview-janitor.yml.
+pr: "7"
+route:
+  host: morti-pr-7.dorilahav.com
+leads:
+  image: dorimon/morti-leads:pr-7-d33dd5ec2d3c742171243d4ba4ce8a6c1bcb1310
+api:
+  image: dorimon/morti-api:pr-7-d33dd5ec2d3c742171243d4ba4ce8a6c1bcb1310
+  env:
+    MONGODB_DB_NAME: morti-pr-7
+    CORS_ORIGIN: https://morti-pr-7.dorilahav.com
